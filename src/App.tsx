@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// src/App.tsx
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import './styles/global.scss';
 
-function App() {
+const App = () => {
+  const isAuthenticated = !!localStorage.getItem('accessToken'); // Check for authentication token
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="app-container">
+        <Routes>
+          {/* Home route - protected, redirect to login if not authenticated */}
+          <Route path="/" element={isAuthenticated ? <Home /> : <Navigate to="/login" />} />
+
+          {/* Login route */}
+          <Route path="/login" element={!isAuthenticated ? <Login /> : <Navigate to="/" />} />
+
+          {/* Fallback route */}
+          <Route path="*" element={<Navigate to={isAuthenticated ? "/" : "/login"} />} />
+        </Routes>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
