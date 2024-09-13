@@ -1,4 +1,3 @@
-// src/pages/Login.tsx
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useApi from '../hooks/useApi';
@@ -18,12 +17,12 @@ const Login = () => {
     try {
       const response = await api.post('/auth/token/', { username, password });
 
-      // Store tokens in localStorage
+      
       localStorage.setItem('accessToken', response.data.access);
       localStorage.setItem('refreshToken', response.data.refresh);
 
-      // Redirect to home page after successful login
-      navigate('/items');
+      
+      navigate('/api/items');
     } catch (err) {
       setError('Invalid credentials, please try again.');
     }

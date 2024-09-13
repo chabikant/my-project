@@ -1,12 +1,11 @@
-// src/hooks/useApi.ts
 import axios, { AxiosInstance } from 'axios';
 
 const useApi = (): AxiosInstance => {
   const api = axios.create({
-    baseURL: 'http://127.0.0.1:8000', // Base URL for your backend API
+    baseURL: 'http://127.0.0.1:8000', // Base URL for backend API
   });
 
-  // Add access token to all requests
+  // Add access token in to all requests
   api.interceptors.request.use((config) => {
     const token = localStorage.getItem('accessToken');
     if (token) {
@@ -15,7 +14,7 @@ const useApi = (): AxiosInstance => {
     return config;
   });
 
-  // Handle token refresh if access token expires
+  // Handle token refresh if access token get  expires
   api.interceptors.response.use(
     (response) => response,
     async (error) => {

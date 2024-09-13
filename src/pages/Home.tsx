@@ -1,4 +1,3 @@
-// src/pages/Home.tsx
 import { useEffect, useState } from 'react';
 import useApi from '../hooks/useApi';
 import '../styles/Home.scss';
@@ -14,11 +13,11 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const api = useApi();
 
-  // Fetch items from the API
+  // Fetching items from the API
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const response = await api.get('/items/');
+        const response = await api.get('/api/items/');
         setItems(response.data);
         setLoading(false);
       } catch (err) {
@@ -32,8 +31,7 @@ const Home = () => {
 
   const handleEdit = async (id: string, newValue: string) => {
     try {
-      await api.put(`/items/${id}/`, { value: newValue });
-      // Refresh items after successful edit
+      await api.put(`/api/items/${id}/`, { value: newValue });
       const updatedItems = items.map(item => item.id === id ? { ...item, value: newValue } : item);
       setItems(updatedItems);
     } catch (err) {
@@ -52,7 +50,7 @@ const Home = () => {
         {items.map(item => (
           <li key={item.id}>
             <span>{item.key}: {item.value}</span>
-            {/* Simple input for editing values */}
+            { }
             <input
               type="text"
               defaultValue={item.value}

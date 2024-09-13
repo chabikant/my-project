@@ -1,3 +1,71 @@
+This project is a React.js application with TypeScript that renders items and includes a login page with JWT-based authentication.
+
+Project Setup:
+
+Node.js (v14+)
+NPM or Yarn package manager
+
+Installation:
+
+1. Clone the repository to your local machine:
+
+git clone https://github.com/chabikant/my-project.git
+cd my-project
+
+2. Install dependencies:
+
+npm install
+
+Ensure your backend is running on localhost:8000.
+
+3. Run the React development server:
+
+npm start
+
+5. The application will be available at http://localhost:3000.
+
+6. How to run the project
+After running the React development server (npm start), navigate to http://localhost:3000.
+The application starts with a login page.
+Enter valid credentials to log in and be redirected to the items page, where items will be fetched from the API.
+
+Custom Hook: useApi
+The custom hook useApi is designed to handle all API requests within the application. It abstracts away the complexity of managing JWT tokens, handling token expiration, and retrying API calls with a refreshed token.
+
+Key Features of the useApi Hook:
+
+1. Token Management:
+
+The hook automatically attaches the JWT token to the Authorization header for API requests.
+It fetches the token from localStorage where it’s saved during login.
+
+2. Token Refresh:
+
+If an API call fails due to token expiration (401 Unauthorized), the hook automatically attempts to refresh the token using the refresh token.
+It retries the failed request after refreshing the token.
+
+3. Error Handling:
+
+Handles API errors and token expiration scenarios. In case of refresh failure, the user is logged out.
+
+This should give your project documentation clear instructions for usage, assumptions, and the working of the custom useApi hook.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

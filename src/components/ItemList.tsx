@@ -1,15 +1,15 @@
-// src/components/ItemList.tsx
+
 import React from 'react';
 import '..styles/ItemList.scss';
 
-// Define the type for a single item
+// Define the type item
 interface Item {
   id: string;
   key: string;
   value: string;
 }
 
-// Define the props for the ItemList component
+// Define the props 
 interface ItemListProps {
   items: Item[];
   onEdit: (id: string, newValue: string) => void;
