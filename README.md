@@ -1,5 +1,7 @@
 This project is a React.js application with TypeScript that renders items and includes a login page with JWT-based authentication.
 
+The Screenshot has been added to the wiki folder
+
 Project Setup:
 
 Node.js (v14+)
